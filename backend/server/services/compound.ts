@@ -1,6 +1,6 @@
 import { Compound } from "../model/compound.ts";
 
-export const getPaginatedCompounds = async (page = 1, limit = 10) => {
+export const getPaginatedCompounds = async (page=1, limit=10 ) => {
   const offset = (page - 1) * limit;
   const { count, rows } = await Compound.findAndCountAll({
     limit,
