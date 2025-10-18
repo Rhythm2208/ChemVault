@@ -29,9 +29,6 @@ const importCSV = async () => {
            image: row.strImageSource || null,
            imageAttribution: row.strImageAttribution || null,
            dateModified: row.dateModified || null,
-         // name: row.name,
-         // image: row.image || null,
-         // description: row.description || null
         });
       })
       .on('end', async () => {

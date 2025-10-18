@@ -3,18 +3,7 @@ import { sequelize } from '../config/db.ts';
 //import { sequelize } from '../config/db'; 
 
 export const Compound = sequelize.define('Compound', {
-  // name: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false,
-  // },
-  // image: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false,
-  // },
-  // description: {
-  //   type: DataTypes.TEXT,
-  //   allowNull: true,
-  // },
+
     id:{
     type: DataTypes.INTEGER,
     autoIncrement: true,
