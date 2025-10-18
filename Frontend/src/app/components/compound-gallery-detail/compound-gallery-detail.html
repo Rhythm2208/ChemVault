@@ -1,0 +1,30 @@
+<div class="detail-container">
+  <h2 class="form-title"> Edit Compound</h2>
+
+  <form class="compound-form" (ngSubmit)="updateCompound()">
+
+    <div class="form-group">
+      <div class="preview" *ngIf="compoundData.image">
+        <img [src]="compoundData.image" alt="Compound Preview" >
+      </div>
+      <label for="name">Name</label>
+      <input id="name" type="text" [(ngModel)]="compoundData.name" name="name" required
+        placeholder="Enter compound name">
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input id="image" type="text" [(ngModel)]="compoundData.image" name="image" required
+        placeholder="Paste image URL here">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="compoundData.description" name="description" required
+        placeholder="Enter compound description">
+      </textarea>
+    </div>
+    <button type="submit" class="btn-update"> Update</button>
+  </form>
+  <p class="message" *ngIf="message">{{ message }}</p>
+</div>
