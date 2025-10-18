@@ -1,0 +1,66 @@
+<div class="login-div">
+  <div class="container">
+
+    <div class="left-pane">
+      <img src="https://picsum.photos/1000/1000?random=10" alt="Signup illustration" />
+    </div>
+
+    <div class="right-pane">
+      <div class="login-card">
+        <h2 class="title">Signup</h2>
+
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              [(ngModel)]="email"
+              #emailRef="ngModel"
+              autocomplete="email"
+              class="form-control"
+            />
+            <div class="error" *ngIf="emailRef.invalid && emailRef.touched">
+              Valid email is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              [(ngModel)]="password"
+              #passwordRef="ngModel"
+              autocomplete="new-password"
+              class="form-control"
+            />
+            <div class="error" *ngIf="passwordRef.invalid && passwordRef.touched">
+              Password is required
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary full-width"
+            [disabled]="loginForm.invalid || isLoading"
+          >
+            {{ isLoading ? 'Signing up...' : 'Signup' }}
+          </button>
+                  <p class="message" *ngIf="message">{{ message }}</p>
+
+        </form>
+
+        <div class="login-link">
+          Already have an account?
+          <a routerLink="/login">Log in</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
