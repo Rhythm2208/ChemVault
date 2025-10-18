@@ -63,21 +63,22 @@ A **Postman API Collection** is included to test and validate all backend endpoi
 
 ## ⚙️ Setup Guide
 
-Follow the steps below to run ChemVault locally.
+Follow the steps below to run ChemVault locally.                
 
 ### Step 1: Clone the Repository
 ```bash
 git clone https://github.com/Rhythm2208/ChemVault.git
 cd ChemVault
+```
 
 ### Step 2: Verify Node.js and npm Installation
 
 Angular requires **Node.js** and **npm** to run and build the application.  
 Check if they’re installed on your system by running the following commands in your terminal:
-
 ```bash
 node -v
 npm -v
+```
 
 ### Step 3: Install Angular CLI
 
@@ -86,7 +87,7 @@ Install it globally on your system using the following command:
 
 ```bash
 npm install -g @angular/cli
-
+```
 ### Step 4: Start MAMP (MySQL)
 
 To set up and run the MySQL database locally, follow these steps:
@@ -104,6 +105,7 @@ To set up and run the MySQL database locally, follow these steps:
 ### Step 5: Configure the Backend Environment
 
 Navigate to your **backend project folder** and create or edit a `.env` file with the following details:
+```sql
 PORT=3000
 DB_HOST=localhost
 DB_PORT=8889
@@ -111,16 +113,17 @@ DB_USER=root
 DB_PASSWORD=root
 DB_NAME=mydatabase
 JWT_SECRET=your_secret_key
-
+```
 ### Step 6: Start the Backend
 
 Navigate to your **backend** directory and run the following commands:
 
 ```bash
 npm install
-npm run dev   # starts the server with nodemon (auto reload)
+npm run dev 
 # or
-npm start     # starts normally
+npm start    
+```
 
 ### Step 7: Start the Angular Frontend
 
@@ -129,8 +132,7 @@ Navigate to your **frontend** folder and execute the following commands:
 ```bash
 npm install
 ng serve
-
-
+```
 
 
 
