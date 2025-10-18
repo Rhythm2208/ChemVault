@@ -106,13 +106,12 @@ To set up and run the MySQL database locally, follow these steps:
 
 Navigate to your **backend project folder** and create or edit a `.env` file with the following details:
 ```sql
-PORT=3000
 DB_HOST=localhost
 DB_PORT=8889
 DB_USER=root
 DB_PASSWORD=root
 DB_NAME=mydatabase
-JWT_SECRET=your_secret_key
+ACCESS_TOKEN_SECRET=your_secret_key
 ```
 ### Step 6: Start the Backend
 
