@@ -9,12 +9,12 @@ Built using **Angular**, **Node.js**, **MySQL** and **CSV Import** it provides a
 
 ## 📘 Table of Contents
 
-1. [Overview](#overview)  
-2. [Screen Recording](#screen-recording)  
-3. [Postman API Collection](#postman-api-collection)  
-4. [Setup Guide](#setup-guide)  
-5. [Working Screenshots](#working-screenshots)  
-6. [Project Deliverables](#project-deliverables)  
+1. [Overview]  
+2. [Screen Recording]
+3. [Postman API Collection]  
+4. [Setup Guide] 
+5. [Working Screenshots]
+6. [Project Deliverables]
 
 ---
 
