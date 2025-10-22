@@ -1,49 +1,57 @@
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
-import { of } from 'rxjs';
+@Component({
+  selector: 'app-signup',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    HttpClientModule 
+  ],
+  templateUrl: './signup.html',
+  styleUrl: './signup.css'
+})
+export class Signup {
+  email = '';
+  password = '';
+  message = '';
+  isLoading = false;
 
-import { Signup } from './signup';
+  constructor(private http: HttpClient, private router: Router) {}
 
-describe('Signup', () => {
-  let fixture: ComponentFixture<Signup>;
-  let component: Signup;
+  onSubmit() {
+    if (!this.email || !this.password) {
+      this.message = 'Email and password are required';
+      return;
+    }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule.withRoutes([]),
-        HttpClientTestingModule,
-        Signup 
-      ],
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            params: of({}),
-            queryParams: of({}),
-            snapshot: { paramMap: convertToParamMap({}) }
-          }
+    this.isLoading = true;
+    this.message = '';
+
+    console.log('signup submitted:', this.email, this.password);
+
+    this.http.post(`http://localhost:9898/users/signup`, {
+      email: this.email,
+      password: this.password
+    }).subscribe({
+      next: (res: any) => {
+        this.isLoading = false;
+        if (res.user) {
+          this.message = 'Signup successful kindly relogin';
+        } else {
+          this.message = 'Invalid response from server';
         }
-      ]
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Signup);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
-
-
-
-
-
-
-
-
+      },
+      error: (err) => {
+        console.error('Signup failed', err.error.message);
+        this.isLoading = false;
+        this.message = err.error.message;
+      }
+    });
+  }
+}
