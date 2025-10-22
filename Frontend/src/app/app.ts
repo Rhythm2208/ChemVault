@@ -9,8 +9,11 @@ import { CompoundGalleryDetail } from './components/compound-gallery-detail/comp
   selector: 'app-root',
   imports: [RouterOutlet,CommonModule,FormsModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+ 
 })
 export class App {
-  protected readonly title = signal('chem-project');
+  title = 'Chem Vault';
 }
+
+
