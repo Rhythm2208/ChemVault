@@ -15,6 +15,7 @@ Built using **Angular**, **Node.js**, **MySQL** and **CSV Import** it provides a
 4. [Setup Guide] 
 5. [Working Screenshots]
 6. [Project Deliverables]
+7. [Unit Testing in Angular through Karma] 
 
 ---
 
@@ -132,6 +133,16 @@ Navigate to your **frontend** folder and execute the following commands:
 npm install
 ng serve
 ```
+
+## 🧪  Unit Testing in Angular through Karma
+just Simply Go to Frontend Directory and run the following command in CLI :
+
+```bash
+ng test
+```
+
+<img width="1470" height="956" alt="image" src="https://github.com/user-attachments/assets/4bdc4161-60ff-4d9d-b33d-1baea6c6d78a" />
+
 
 
 
