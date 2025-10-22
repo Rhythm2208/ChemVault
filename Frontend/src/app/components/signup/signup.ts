@@ -1,57 +1,49 @@
-import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
 
-@Component({
-  selector: 'app-signup',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    HttpClientModule 
-  ],
-  templateUrl: './signup.html',
-  styleUrl: './signup.css'
-})
-export class Signup {
-  email = '';
-  password = '';
-  message = '';
-  isLoading = false;
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { of } from 'rxjs';
 
-  constructor(private http: HttpClient, private router: Router) {}
+import { Signup } from './signup';
 
-  onSubmit() {
-    if (!this.email || !this.password) {
-      this.message = 'Email and password are required';
-      return;
-    }
+describe('Signup', () => {
+  let fixture: ComponentFixture<Signup>;
+  let component: Signup;
 
-    this.isLoading = true;
-    this.message = '';
-
-    console.log('signup submitted:', this.email, this.password);
-
-    this.http.post(`http://localhost:9002/users/signup`, {
-      email: this.email,
-      password: this.password
-    }).subscribe({
-      next: (res: any) => {
-        this.isLoading = false;
-        if (res.user) {
-          this.message = 'Signup successful kindly relogin';
-        } else {
-          this.message = 'Invalid response from server';
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes([]),
+        HttpClientTestingModule,
+        Signup 
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}),
+            queryParams: of({}),
+            snapshot: { paramMap: convertToParamMap({}) }
+          }
         }
-      },
-      error: (err) => {
-        console.error('Signup failed', err.error.message);
-        this.isLoading = false;
-        this.message = err.error.message;
-      }
-    });
-  }
-}
+      ]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(Signup);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+
+
+
+
+
+
