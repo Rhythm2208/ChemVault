@@ -1,16 +1,33 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { of } from 'rxjs';
 
-import { Login } from './login';
+import { Login } from './login'; 
 
 describe('Login', () => {
-  let component: Login;
   let fixture: ComponentFixture<Login>;
+  let component: Login;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Login]
-    })
-    .compileComponents();
+      imports: [
+        RouterTestingModule.withRoutes([]), 
+        HttpClientTestingModule,
+        Login 
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}), 
+            queryParams: of({}),
+            snapshot: { paramMap: convertToParamMap({}) }
+          }
+        }
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Login);
     component = fixture.componentInstance;
@@ -21,3 +38,6 @@ describe('Login', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
+
