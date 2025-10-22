@@ -1,4 +1,8 @@
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { of } from 'rxjs';
 
 import { CompoundGalleryDetail } from './compound-gallery-detail';
 
@@ -8,9 +12,21 @@ describe('CompoundGalleryDetail', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CompoundGalleryDetail]
-    })
-    .compileComponents();
+      imports: [
+        RouterTestingModule,         
+        CompoundGalleryDetail       
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({ id: '1' }),                               
+            queryParams: of({}),                                    
+            snapshot: { paramMap: convertToParamMap({ id: '1' }) }   
+          }
+        }
+      ]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CompoundGalleryDetail);
     component = fixture.componentInstance;
