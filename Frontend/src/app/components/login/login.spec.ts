@@ -4,7 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
 
-import { Login } from './login'; 
+import { Login } from './login'; // adjust if component class/name differs
 
 describe('Login', () => {
   let fixture: ComponentFixture<Login>;
@@ -13,7 +13,7 @@ describe('Login', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes([]), 
+        RouterTestingModule.withRoutes([]),
         HttpClientTestingModule,
         Login 
       ],
@@ -21,7 +21,7 @@ describe('Login', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            params: of({}), 
+            params: of({}),
             queryParams: of({}),
             snapshot: { paramMap: convertToParamMap({}) }
           }
@@ -38,6 +38,3 @@ describe('Login', () => {
     expect(component).toBeTruthy();
   });
 });
-
-
-
